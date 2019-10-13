@@ -2,6 +2,18 @@ import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {fetchData} from "../../../Store/Actions/DataActions";
 import DataCard from "./DataCard/DataCard";
+import GridList from "@material-ui/core/GridList";
+import { withStyles } from '@material-ui/core/styles';
+import Grid from "@material-ui/core/Grid";
+
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+    },
+};
 
 class FileList extends Component {
 
@@ -10,11 +22,9 @@ class FileList extends Component {
     }
 
     render() {
+        const createDataViews = dataArray => dataArray.map(dataUnit => <DataCard {...dataUnit} />);
 
-        const createDataViews = dataArray => {
-            let result = dataArray.map(dataUnit => <DataCard {...dataUnit} />);
-            return result;
-        };
+        const { classes } = this.props;
 
         const getViewByState = () => {
             if (this.props.isFetching) {
@@ -32,9 +42,9 @@ class FileList extends Component {
                     );
                 }
                 return (
-                    <div>
-                    {createDataViews(this.props.data._embedded.items)}
-                    </div>
+                    <Grid className={classes.root}>
+                        {createDataViews(this.props.data._embedded.items)}
+                    </Grid>
                 )
             }
         };
@@ -57,4 +67,5 @@ const MapDispatchToProps = dispatch => ({
     fetchData: (path, token) => dispatch(fetchData(path, token))
 });
 
-export default connect(MapStateToProps, MapDispatchToProps)(FileList);
+
+export default withStyles(styles)(connect(MapStateToProps, MapDispatchToProps)(FileList));
