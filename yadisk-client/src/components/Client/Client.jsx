@@ -17,7 +17,7 @@ function Client(props) {
         <React.Fragment>
             <Container>
                 {/*<FileBreadCrumb/>*/}
-                {/*<FileManagement/>*/}
+                <FileManagement/>
                 <FileList/>
             </Container>
         </React.Fragment>
