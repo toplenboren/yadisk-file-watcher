@@ -1,7 +1,7 @@
 //Get Y.Token function
-export const loginUser = () => {
+export const loginUser = (token) => {
     return dispatch => {
-        dispatch(_loginUser("AgAEA7qi1JtcAAXrSAfWyjuLtkCtiZ6ClAQXChM"));
+        dispatch(_loginUser(token));
     }
 };
 

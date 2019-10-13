@@ -27,7 +27,7 @@ function Auth(props) {
     const classes = useStyles();
 
     const handleClick = () => {
-        props.login();
+        window.location.replace("https://oauth.yandex.ru/authorize?response_type=token&client_id=" + "0724eb8bf3be479a9b2208ee6bca4260")
     };
 
     const isLoggedIn = () => {
@@ -70,9 +70,5 @@ function MapStateToProps(store) {
     }
 }
 
-const MapDispatchToProps = dispatch => ({
-    login: () => dispatch(loginUser())
-});
-
-export default connect(MapStateToProps, MapDispatchToProps)(Auth);
+export default connect(MapStateToProps, null)(Auth);
 

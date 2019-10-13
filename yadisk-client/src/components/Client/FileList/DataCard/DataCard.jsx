@@ -22,7 +22,9 @@ function DataCard(props) {
     return (
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography className={classes.title} color={"textSecondary"} gutterBottom> {props.type} </Typography>
+                    <Typography className={classes.title} color={"textSecondary"} gutterBottom>
+                        {props.type}
+                    </Typography>
                     <Typography variant="h5" component="h2"> {props.name} </Typography>
                 </CardContent>
             </Card>
