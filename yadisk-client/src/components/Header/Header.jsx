@@ -4,6 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import connect from "react-redux/es/connect/connect";
+import {logoutUser} from "./../../Store/Actions/AuthActions";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,8 +23,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Header() {
+function Header(props) {
     const classes = useStyles();
+
+    const handleClick = () => {
+      props.logout()
+    };
 
     return (
         <React.Fragment>
@@ -31,11 +37,19 @@ function Header() {
                     <Typography variant="h6" className={classes.title}>
                         Observer.yd
                     </Typography>
-                    <Button color="inherit">Выйти</Button>
+                    <Button type="submit" color="inherit" onClick={handleClick}>Выйти</Button>
                 </Toolbar>
             </AppBar>
         </React.Fragment>
     );
 }
 
-export default Header;
+const MapStateToProps = store => ({
+    token: store.AuthReducer.token
+});
+
+const MapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logoutUser())
+});
+
+export default connect(MapStateToProps, MapDispatchToProps)(Header);
