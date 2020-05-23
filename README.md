@@ -1,8 +1,27 @@
-# hackathon-best-urfu-testing-task
-testing task for WEBdev track on hackathon best urfu
+# yadisk-file-watcher
+Тонкий клиент для Яндекс.Диска.
+Умеет аутентифицироваться на Яндексе через OAuth и получать данные диска по `http`
 
-Приложение создано с помощью Create-react-app.
+Задача с курса «Протоколы интернета» с мат-меха
+Сделано студентом группы КН-202, Горбуновым Михаилом
 
-Подробная инструкция по запуску лежит в /yadisk-client.
+## Запуск:
 
-Локально запускать на 3000 порту, иначе не будет приходить callback от REST API Я.Диска.
+У вас должен быть установлен `Node.JS > 9.x.x` и `npm`
+
+Для первого запуска:
+
+```
+cd ./yadisk-client
+npm install 
+npm start
+```
+
+Для последующих запусков:
+
+```
+cd ./yadisk-client
+npm start
+```
+
+Приложение поднимается на `localhost:3000`
